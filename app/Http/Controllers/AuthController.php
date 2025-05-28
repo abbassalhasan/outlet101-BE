@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\BaseController as BaseController;
 use App\Models\User;
-use Validator;
 use Illuminate\Http\Request;
+use Validator;
+
 
 class AuthController extends BaseController
 {
@@ -15,9 +15,9 @@ class AuthController extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(Request $request) {
+    public function register(Request $req) {
 
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($req->all(), [
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
@@ -28,7 +28,7 @@ class AuthController extends BaseController
             return $this->sendError('Validation Error.', $validator->errors());
         }
 
-        $input = $request->all();
+        $input = $req->all();
         $input['password'] = bcrypt($input['password']);
         $input['role_id'] = 2;
         $user = User::create($input);
@@ -82,5 +82,12 @@ class AuthController extends BaseController
         return $this->sendResponse([], 'Successfully logged out.');
     }
 
-
+     protected function respondWithToken($token)
+    {
+        return [
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
+        ];
+    }
 }
