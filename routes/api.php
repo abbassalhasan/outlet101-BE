@@ -19,4 +19,12 @@ Route::controller(ProductController::class)->prefix('products')->group(function 
     Route::middleware(['auth:api'])->group(function () {
         Route::post('/add', 'add_product');
     });
+    Route::delete('/delete/{id}', 'delete_product');
+    Route::post('/edit/{id}',  'edit_product');
+    Route::get('/get-all','get_products');
+    Route::get('/get/{id}','get_product');
+
 });
+
+
+
