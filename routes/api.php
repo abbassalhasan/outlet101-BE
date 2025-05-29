@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,6 +25,14 @@ Route::controller(ProductController::class)->prefix('products')->group(function 
     Route::post('/edit/{id}',  'edit_product');
     Route::get('/get-all','get_products');
     Route::get('/get/{id}','get_product');
+});
+
+Route::controller(CategoryController::class)->prefix('category')->group(function () {
+    Route::post('/add','add_category');
+    Route::delete('/delete/{id}','delete_category');
+    Route::post('/edit/{id}','edit_category');
+    Route::get('/get_all','get_categories');
+    Route::get('/get/{id}','get_category');
 
 });
 

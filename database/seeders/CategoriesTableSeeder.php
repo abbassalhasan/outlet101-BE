@@ -13,12 +13,12 @@ class CategoriesTableSeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['name' => 'Women Shoes', 'description' => 'All kinds of  women shoes '],
-            ['name' => 'Mens Wear', 'description' => 'All kinds of men Wear'],
-            ['name' => 'Mens Shoes', 'description' => 'All kinds of men shoes'],
-            ['name' => 'Women Wear', 'description' => 'All kinds of  women Wear'],
-            ['name'=> 'Kids Shoes', 'description'=> 'ALl kinds of kids Shoes'],
-            ['name'=> 'kids Wear', 'description'=> 'All kinds of Kids Wear'],
+            ['name' => 'Women Shoes',"slug"=>"Women_shoes", 'description' => 'All kinds of  women shoes '],
+            ['name' => 'Mens Wear',"slug"=>"Mens_Wear", 'description' => 'All kinds of men Wear'],
+            ['name' => 'Mens Shoes',"slug"=>"Mens_shoes", 'description' => 'All kinds of men shoes'],
+            ['name' => 'Women Wear',"slug"=>"Women_Wear", 'description' => 'All kinds of  women Wear'],
+            ['name'=> 'Kids Shoes',"slug"=>"Kids_shoes", 'description'=> 'ALl kinds of kids Shoes'],
+            ['name'=> 'kids Wear',"slug"=>"Kids_Wear", 'description'=> 'All kinds of Kids Wear'],
         ];
 
         foreach ($categories as $category) {

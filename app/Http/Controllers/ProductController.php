@@ -122,6 +122,6 @@ class ProductController extends BaseController
 }
    public function get_products()
    {
-    return $this->sendResponse(Product::all(),'Products retrieved successfully');
+    return $this->sendResponse(Product::all(),'Product retrieved successfully');
    }
 }
