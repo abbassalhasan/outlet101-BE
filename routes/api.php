@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Models\Category;
@@ -33,8 +34,15 @@ Route::controller(CategoryController::class)->prefix('category')->group(function
     Route::post('/edit/{id}','edit_category');
     Route::get('/get_all','get_categories');
     Route::get('/get/{id}','get_category');
-
 });
 
-
+Route::controller(CartItemController::class)->prefix('cart')->group(function () {
+    Route::middleware(['auth:api'])->group(function () {
+        Route::post('add','add_item');
+        Route::delete('delete/{id}','delete_item');
+        Route::post('edit/{id}','edit_item');
+        Route::get('get/{id}','get_cart_items');
+        Route::get('purchase/{id}','purchase');
+    });
+});
 

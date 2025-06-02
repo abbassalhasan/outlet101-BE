@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('cart_items', function (Blueprint $table) {
@@ -25,7 +23,7 @@ return new class extends Migration
 
              $table->foreign('product_id')
                 ->references('id')
-                ->on('product')
+                ->on('products')
                 ->onDelete('cascade');
 
         });

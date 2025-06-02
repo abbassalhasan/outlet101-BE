@@ -15,7 +15,7 @@ class ProductController extends BaseController
          $validator = Validator::make($req->all(), [
             'name' => 'required|string',
             'price'=> 'required|integer',
-            'amount'=> 'required|integer',
+            'stock'=> 'required|integer',
             'description'=> 'nullable|string',
             'category_id'=> 'integer|required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:4096'
@@ -74,7 +74,7 @@ class ProductController extends BaseController
             'description' => 'sometimes|string|nullable',
             'price' => 'sometimes|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:4096',
-            'amount'=> 'integer',
+            'stock'=> 'integer',
             'category_id'=> 'integer'
         ]);
 
@@ -82,7 +82,7 @@ class ProductController extends BaseController
             return $this->sendError('Validation Error.', $validator->errors());
         }
 
-        $updateData = $req->only(['name', 'description', 'price', 'amount', 'category_id']);
+        $updateData = $req->only(['name', 'description', 'price', 'stock', 'category_id']);
 
          if ($req->has('name')) {
         $updateData['slug'] = Str::slug($req->input('name'));
